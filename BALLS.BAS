@@ -28,7 +28,6 @@ TYPE ScoreStr
 END TYPE
 
 DECLARE FUNCTION Choose$ (X, Y, Prompt$, Choices$)
-DECLARE FUNCTION GetDelay$ ()
 DECLARE FUNCTION GetInput$ (X, Y, Prompt$, MaximumLength)
 DECLARE SUB AddScore ()
 DECLARE SUB AskPlayAgain ()
@@ -149,10 +148,10 @@ SUB Bonus
  DelayStart(0) = TIMER
  DO
   LOCATE 3
-  PRINT SPC(10); "ÛßßßÜ ÜßßßÜ ÛÜ  Û Û   Û Üßßßß Û"
-  PRINT SPC(10); "ÛÜÜÜß Û   Û Û Û Û Û   Û ßÜÜÜ  Û"
-  PRINT SPC(10); "Û   Û Û   Û Û ßÜÛ Û   Û     Û ß"
-  PRINT SPC(10); "ßßßß   ßßß  ß   ß  ßßß  ßßßß  ß"
+  PRINT SPC(10); "Ã›ÃŸÃŸÃŸÃœ ÃœÃŸÃŸÃŸÃœ Ã›Ãœ  Ã› Ã›   Ã› ÃœÃŸÃŸÃŸÃŸ Ã›"
+  PRINT SPC(10); "Ã›ÃœÃœÃœÃŸ Ã›   Ã› Ã› Ã› Ã› Ã›   Ã› ÃŸÃœÃœÃœ  Ã›"
+  PRINT SPC(10); "Ã›   Ã› Ã›   Ã› Ã› ÃŸÃœÃ› Ã›   Ã›     Ã› ÃŸ"
+  PRINT SPC(10); "ÃŸÃŸÃŸÃŸ   ÃŸÃŸÃŸ  ÃŸ   ÃŸ  ÃŸÃŸÃŸ  ÃŸÃŸÃŸÃŸ  ÃŸ"
   PRINT SPC(10); "Score is: "; Player.Score; ", score becomes: "; Player.Score + (5 * Player.Lives)
   DelayStart(1) = TIMER: DO: LOOP UNTIL TIMER > DelayStart(1) + .2 OR TIMER < 3
   CLS
@@ -207,9 +206,9 @@ END SUB
 
 SUB DisplayTitle
  COLOR 2: LOCATE 2
- PRINT "ÛßßßÜ ÜßßßÜ Û    Û    Üßßß        Balls,       "
- PRINT "ÛßßßÜ ÛßßßÛ Û    Û     ßßÜ  by: Peter Swinkels "
- PRINT "ßßßß  ß   ß ßßßß ßßßß ßßß       ***2021***     "
+ PRINT "Ã›ÃŸÃŸÃŸÃœ ÃœÃŸÃŸÃŸÃœ Ã›    Ã›    ÃœÃŸÃŸÃŸ        Balls,       "
+ PRINT "Ã›ÃŸÃŸÃŸÃœ Ã›ÃŸÃŸÃŸÃ› Ã›    Ã›     ÃŸÃŸÃœ  by: Peter Swinkels "
+ PRINT "ÃŸÃŸÃŸÃŸ  ÃŸ   ÃŸ ÃŸÃŸÃŸÃŸ ÃŸÃŸÃŸÃŸ ÃŸÃŸÃŸ       ***2021***     "
 END SUB
 
 SUB DisplayYouLost
@@ -223,10 +222,10 @@ SUB DisplayYouLost
   CLS
   DelayStart(1) = TIMER: DO: LOOP UNTIL TIMER > DelayStart(1) + .1 OR TIMER < 3
   LOCATE 3
-  PRINT SPC(10); "Û   Û ÜßßßÜ Û   Û  Û    ÜßßßÜ Üßßßß ßßÛßß Û"
-  PRINT SPC(10); "ßÜÜÜÛ Û   Û Û   Û  Û    Û   Û ßÜÜÜ    Û   Û"
-  PRINT SPC(10); "    Û Û   Û Û   Û  Û    Û   Û     Û   Û   ß"
-  PRINT SPC(10); "ßßßß   ßßß   ßßß   ßßßß  ßßß  ßßßß    ß   ß"
+  PRINT SPC(10); "Ã›   Ã› ÃœÃŸÃŸÃŸÃœ Ã›   Ã›  Ã›    ÃœÃŸÃŸÃŸÃœ ÃœÃŸÃŸÃŸÃŸ ÃŸÃŸÃ›ÃŸÃŸ Ã›"
+  PRINT SPC(10); "ÃŸÃœÃœÃœÃ› Ã›   Ã› Ã›   Ã›  Ã›    Ã›   Ã› ÃŸÃœÃœÃœ    Ã›   Ã›"
+  PRINT SPC(10); "    Ã› Ã›   Ã› Ã›   Ã›  Ã›    Ã›   Ã›     Ã›   Ã›   ÃŸ"
+  PRINT SPC(10); "ÃŸÃŸÃŸÃŸ   ÃŸÃŸÃŸ   ÃŸÃŸÃŸ   ÃŸÃŸÃŸÃŸ  ÃŸÃŸÃŸ  ÃŸÃŸÃŸÃŸ    ÃŸ   ÃŸ"
   DelayStart(1) = TIMER: DO: LOOP UNTIL TIMER > DelayStart(1) + .2 OR TIMER < 3
  LOOP UNTIL TIMER > DelayStart(0) + 2 OR TIMER < 3
 
@@ -245,10 +244,10 @@ SUB DisplayYouWon
   CLS
   DelayStart(1) = TIMER: DO: LOOP UNTIL TIMER > DelayStart(1) + .1 OR TIMER < 3
   LOCATE 3
-  PRINT SPC(10); "Û   Û ÜßßßÜ Û   Û  Û   Ü   Û ÜßßßÜ ÛÜ  Û Û"
-  PRINT SPC(10); "ßÜÜÜÛ Û   Û Û   Û  ßÜ ÜßÜ Üß Û   Û Û Û Û Û"
-  PRINT SPC(10); "    Û Û   Û Û   Û   Û Û Û Û  Û   Û Û ßÜÛ ß"
-  PRINT SPC(10); "ßßßß   ßßß   ßßß     ß   ß    ßßß  ß   ß ß"
+  PRINT SPC(10); "Ã›   Ã› ÃœÃŸÃŸÃŸÃœ Ã›   Ã›  Ã›   Ãœ   Ã› ÃœÃŸÃŸÃŸÃœ Ã›Ãœ  Ã› Ã›"
+  PRINT SPC(10); "ÃŸÃœÃœÃœÃ› Ã›   Ã› Ã›   Ã›  ÃŸÃœ ÃœÃŸÃœ ÃœÃŸ Ã›   Ã› Ã› Ã› Ã› Ã›"
+  PRINT SPC(10); "    Ã› Ã›   Ã› Ã›   Ã›   Ã› Ã› Ã› Ã›  Ã›   Ã› Ã› ÃŸÃœÃ› ÃŸ"
+  PRINT SPC(10); "ÃŸÃŸÃŸÃŸ   ÃŸÃŸÃŸ   ÃŸÃŸÃŸ     ÃŸ   ÃŸ    ÃŸÃŸÃŸ  ÃŸ   ÃŸ ÃŸ"
   DelayStart(1) = TIMER: DO: LOOP UNTIL TIMER > DelayStart(1) + .2 OR TIMER < 3
  LOOP UNTIL TIMER > DelayStart(0) + 2 OR TIMER < 3
 
